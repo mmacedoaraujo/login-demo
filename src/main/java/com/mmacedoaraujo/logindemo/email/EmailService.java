@@ -24,16 +24,16 @@ public class EmailService implements EmailSender {
     public void send(String to, String email) {
         try {
             MimeMessage mimeMessage = mailSender.createMimeMessage();
-            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "utf-8");
+            MimeMessageHelper helper =
+                    new MimeMessageHelper(mimeMessage, "utf-8");
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Confirm your email");
-            helper.setFrom("marcomacedoaraujo@gmail.com");
+            helper.setFrom("hello@amigoscode.com");
             mailSender.send(mimeMessage);
-        } catch (MessagingException ex) {
-            LOGGER.error("Failed to send email", ex);
-            throw new IllegalStateException("Failed to send email");
-
+        } catch (MessagingException e) {
+            LOGGER.error("failed to send email", e);
+            throw new IllegalStateException("failed to send email");
         }
     }
 }
